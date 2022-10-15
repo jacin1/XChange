@@ -1,10 +1,12 @@
 package org.knowm.xchange.bybit.service;
 
 import org.knowm.xchange.Exchange;
+import org.knowm.xchange.bybit.BybitAdapters;
 import org.knowm.xchange.bybit.dto.BybitResult;
 import org.knowm.xchange.bybit.dto.trade.BybitOrderDetails;
 import org.knowm.xchange.bybit.dto.trade.BybitOrderRequest;
 import org.knowm.xchange.dto.Order;
+import org.knowm.xchange.dto.trade.LimitOrder;
 import org.knowm.xchange.dto.trade.MarketOrder;
 import org.knowm.xchange.service.trade.TradeService;
 
@@ -12,6 +14,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
 import static org.knowm.xchange.bybit.BybitAdapters.*;
 
@@ -44,6 +47,18 @@ public class BybitTradeService extends BybitTradeServiceRaw implements TradeServ
         }
 
         return results;
+    }
+
+    @Override
+    public String placeLimitOrder(LimitOrder limitOrder) throws IOException {
+        String symbol = BybitAdapters.convertToBybitSymbol(limitOrder.getInstrument().toString());
+        BybitResult<Map<String,Object>> placeOrder = placeLimitOrder(symbol,
+                limitOrder.getOriginalAmount().doubleValue(), BybitAdapters.getSideString(limitOrder.getType()),  "LIMIT", limitOrder.getLimitPrice().doubleValue());
+        if (!placeOrder.isSuccess()) {
+            throw BybitAdapters.createBybitExceptionFromResult(placeOrder);
+        } else {
+            return (String) placeOrder.getResult().get("orderId");
+        }
     }
 
 }

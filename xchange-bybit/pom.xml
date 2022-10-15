@@ -10,6 +10,7 @@
     </parent>
 
     <artifactId>xchange-bybit</artifactId>
+    <version>5.0.14-JACK-SNAPSHOT</version>
 
     <name>XChange Bybit</name>
     <description>XChange implementation for Bybit</description>
@@ -34,7 +35,7 @@
         <dependency>
             <groupId>org.knowm.xchange</groupId>
             <artifactId>xchange-core</artifactId>
-            <version>${project.version}</version>
+            <version>5.0.14-SNAPSHOT</version>
         </dependency>
 
         <dependency>

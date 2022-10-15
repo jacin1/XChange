@@ -62,19 +62,17 @@ public class OkexExchange extends BaseExchange {
   public ExchangeSpecification getDefaultExchangeSpecification() {
 
     ExchangeSpecification exchangeSpecification = new ExchangeSpecification(this.getClass());
-    exchangeSpecification.setSslUri("https://www.okx.com");
-    exchangeSpecification.setHost("okx.com");
+    exchangeSpecification.setSslUri("https://www.okex.com");
+    exchangeSpecification.setHost("okex.com");
     exchangeSpecification.setPort(80);
     exchangeSpecification.setExchangeName("Okex");
-    exchangeSpecification.setExchangeDescription("Okx Exchange");
+    exchangeSpecification.setExchangeDescription("Okex Exchange");
 
     exchangeSpecification.setExchangeSpecificParametersItem(Parameters.PARAM_USE_AWS, false);
     exchangeSpecification.setExchangeSpecificParametersItem(
-        Parameters.PARAM_AWS_SSL_URI, "https://aws.okx.com");
+        Parameters.PARAM_AWS_SSL_URI, "https://aws.okex.com");
     exchangeSpecification.setExchangeSpecificParametersItem(
-        Parameters.PARAM_AWS_HOST, "aws.okx.com");
-
-//    exchangeSpecification.setExchangeSpecificParametersItem(Parameters.PARAM_SIMULATED_TRADING, "1");
+        Parameters.PARAM_AWS_HOST, "aws.okex.com");
 
     return exchangeSpecification;
   }
@@ -122,7 +120,5 @@ public class OkexExchange extends BaseExchange {
     public static final String PARAM_USE_AWS = "Use_AWS";
     public static final String PARAM_AWS_SSL_URI = "AWSSslUri";
     public static final String PARAM_AWS_HOST = "AWSHost";
-    public static final String PARAM_SIMULATED_TRADING = "simulated";
-    public static final String PARAM_PASSPHRASE = "passphrase";
   }
 }
