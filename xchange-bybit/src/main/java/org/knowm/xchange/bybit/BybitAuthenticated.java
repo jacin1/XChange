@@ -57,7 +57,7 @@ public interface BybitAuthenticated {
 
     @GET
     @Path("/spot/quote/v1/trades")
-    BybitResult<List<BybitTradesDetails>> trades(@QueryParam("api_key") String var1, @QueryParam("symbol") String var2, @QueryParam("timestamp") SynchronizedValueFactory<Long> var3, @QueryParam("sign") ParamsDigest var4) throws IOException, BybitException;
+    BybitResult<List<BybitTradesDetails>> trades(@QueryParam("api_key") String var1, @QueryParam("symbol") String var2,@QueryParam("limit") String limit, @QueryParam("timestamp") SynchronizedValueFactory<Long> var3, @QueryParam("sign") ParamsDigest var4) throws IOException, BybitException;
 
 
     @POST

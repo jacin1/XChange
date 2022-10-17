@@ -43,7 +43,7 @@ public class BybitMarketDataService extends BybitMarketDataServiceRaw implements
     @Override
     public Trades getTrades(CurrencyPair currencyPair, Object... args) throws IOException {
         String symbol = BybitAdapters.convertToBybitSymbol(currencyPair.toString());
-        BybitResult<List<BybitTradesDetails>> trades = this.bybitAuthenticated.trades(this.apiKey, symbol, this.nonceFactory, this.signatureCreator);
+        BybitResult<List<BybitTradesDetails>> trades = this.bybitAuthenticated.trades(this.apiKey, symbol, "20", this.nonceFactory, this.signatureCreator);
         if (!trades.isSuccess()) {
             throw BybitAdapters.createBybitExceptionFromResult(trades);
         } else {
