@@ -28,7 +28,7 @@ public class BybitMarketDataService extends BybitMarketDataServiceRaw implements
     @Override
     public OrderBook getOrderBook(CurrencyPair currencyPair, Object... args) throws IOException {
         String symbol = BybitAdapters.convertToBybitSymbol(currencyPair .toString());
-        BybitResult<BybitOrderBookDetails> orderBook = this.bybitAuthenticated.orderBook(this.apiKey, symbol, this.nonceFactory, this.signatureCreator);
+        BybitResult<BybitOrderBookDetails> orderBook = this.bybitAuthenticated.orderBook(this.apiKey, symbol, "30", this.nonceFactory, this.signatureCreator);
         if (!orderBook.isSuccess()) {
             throw BybitAdapters.createBybitExceptionFromResult(orderBook);
         } else {
